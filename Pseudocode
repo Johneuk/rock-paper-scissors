@@ -1,0 +1,40 @@
+My Rock Paper Scissor pseudocode:
+
+function getComputerChoice() {
+	let Number = Random Number between 1 and 3
+	make 1: Rock
+	make 2: Paper
+	make 3: Scissor
+}
+
+function playRound(playerSelection, computerSelection) {
+	return several strings according to result like:
+	-> "You lose! Paper beats Rock!"
+	-> "You win! Rock beats Scissors!"
+	-> etc.
+
+	Inside the function: make playerSelection case-insensitive with
+	.toLowerCase() and to .toUpperCase() and .slice()
+}
+
+const playerSelection = "rOcK";
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
+
+=> Here make some tests with the debugger console and refresh the page repeatedly to test if it works properly
+
+function game() {
+	play 5 rounds of the game
+	
+	make a loop that iterates until 5 and then stops
+	
+	or call the playRound() function 5 times in a row and then make a conclusion
+	
+	console.log(results of each round and the winner)
+	
+	prompt(get Input from user like "Please choose between Rock, Paper or Scissor: ")
+	
+	Return Results and winner
+}
+
+Play around with the code, make it more smooth and adjust it

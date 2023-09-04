@@ -14,7 +14,7 @@ function playRound(playerSelection, computerSelection) {
 	-> etc.
 
 	Inside the function: make playerSelection case-insensitive with
-	.toLowerCase() and to .toUpperCase() and .slice()
+	.toLowerCase() and to .toUpperCase() and .slice() and concatenation
 }
 
 const playerSelection = "rOcK";

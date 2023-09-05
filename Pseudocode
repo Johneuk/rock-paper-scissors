@@ -17,7 +17,7 @@ function playRound(playerSelection, computerSelection) {
 	.toLowerCase() and to .toUpperCase() and .slice() and concatenation
 }
 
-const playerSelection = "rOcK";
+const playerSelection = prompt("Please choose between Rock, Paper or Scissor:", "");
 const computerSelection = getComputerChoice();
 console.log(playRound(playerSelection, computerSelection));
 
@@ -28,13 +28,15 @@ function game() {
 	
 	make a loop that iterates until 5 and then stops
 	
-	or call the playRound() function 5 times in a row and then make a conclusion
+	or call the playRound() function 5 times in a row and then alert the result
 	
 	console.log(results of each round and the winner)
 	
 	prompt(get Input from user like "Please choose between Rock, Paper or Scissor: ")
 	
-	Return Results and winner
+	Keep score and declare winner and loser
+
+	Change return values to "Win", "Lose" and "Draw" and give winning points (win: 2, draw: 1, lose: 0)
 }
 
 Play around with the code, make it more smooth and adjust it

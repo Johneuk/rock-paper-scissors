@@ -52,42 +52,40 @@ function game() {
     let roundsLeft = 5;
     let humanScore = 0;
     let computerScore = 0;
-    for (let i = 0; i < 5; i++) {
-    const playerSelection = prompt("Rock, Paper or Scissors?", "");
+    for (let i = 0; i < 5; i++) {   
+    let roundText = i === 4 ? 'LAST ROUND' : `ROUND ${i+1}`;
+    let playerSelection = prompt(`${roundText}: Rock, Paper or Scissors?`, "");
     const computerSelection = getComputerChoice();
     let points = (playRound(playerSelection, computerSelection));
       if (points === 0) {
         roundsLeft--;
-        alert("You lose! You get 0 points.");
-        computerScore = computerScore + 2;
+        computerScore += 2;
         if (roundsLeft > 1 || roundsLeft < 1) {
-        alert(`Your current score is ${humanScore}, the computer's score is ${computerScore}, you have ${roundsLeft} rounds left.`);
+        alert(`You lose! You get 0 points. Your current score is ${humanScore}, the computers score is ${computerScore}, you have ${roundsLeft} rounds left.`);
         }
         else if (roundsLeft === 1) {
-        alert(`Your current score is ${humanScore}, the computer's score is ${computerScore}, you have ${roundsLeft} round left.`);
+        alert(`You lose! You get 0 points. Your current score is ${humanScore}, the computers score is ${computerScore}, you have ${roundsLeft} round left.`);
         }
       }
       else if (points === 1) {
         roundsLeft--;
-        alert("Draw! You get 1 point.");
-        humanScore = humanScore + 1;
-        computerScore = computerScore + 1;
+        humanScore++;
+        computerScore++;
         if (roundsLeft > 1 || roundsLeft < 1) {
-        alert(`Your current score is ${humanScore}, the computer's score is ${computerScore}, you have ${roundsLeft} rounds left.`);
+        alert(`Draw! You get 1 point. Your current score is ${humanScore}, the computers score is ${computerScore}, you have ${roundsLeft} rounds left.`);
         }
         else if (roundsLeft === 1) {
-        alert(`Your current score is ${humanScore}, the computer's score is ${computerScore}, you have ${roundsLeft} round left.`);
+        alert(`Draw! You get 1 point. Your current score is ${humanScore}, the computers score is ${computerScore}, you have ${roundsLeft} round left.`);
         }
       }
       else if (points === 2) {
         roundsLeft--;
-        alert("You win! You get 2 points.");
-        humanScore = humanScore + 2;
+        humanScore += 2;
         if (roundsLeft > 1 || roundsLeft < 1) {
-        alert(`Your current score is ${humanScore}, the computer's score is ${computerScore}, you have ${roundsLeft} rounds left.`);
+        alert(`You win! You get 2 points. Your current score is ${humanScore}, the computers score is ${computerScore}, you have ${roundsLeft} rounds left.`);
         }
         else if (roundsLeft === 1) {
-        alert(`Your current score is ${humanScore}, the computer's score is ${computerScore}, you have ${roundsLeft} round left.`);
+        alert(`You win! You get 2 points. Your current score is ${humanScore}, the computers score is ${computerScore}, you have ${roundsLeft} round left.`);
         }
       }
     }
@@ -101,7 +99,9 @@ function game() {
         alert(`Draw! With ${humanScore} points you played as good as the computer who has also ${computerScore} points.`);
     }
 }
-game();
+while (true) {
+    game();
+}
     </script>
 </body>
 </html>

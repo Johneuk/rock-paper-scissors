@@ -99,9 +99,24 @@ function game() {
         alert(`Draw! With ${humanScore} points you played as good as the computer who has also ${computerScore} points.`);
     }
 }
-while (true) {
-    game();
-}
+
+let Body = document.getElementsByTagName("body")[0];
+
+const button1 = document.createElement('button');
+let buttonText = document.createTextNode("Click me!");
+button1.appendChild(buttonText);
+Body.appendChild(button1);
+
+const button2 = document.createElement('button');
+let buttonText2 = document.createTextNode("Click me!");
+button2.appendChild(buttonText2);
+Body.appendChild(button2);
+
+const button3 = document.createElement('button');
+let buttonText3 = document.createTextNode("Click me!");
+button3.appendChild(buttonText3);
+Body.appendChild(button3);
+
     </script>
 </body>
 </html>

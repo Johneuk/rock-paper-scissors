@@ -6,57 +6,139 @@
     <title>Rock, Paper, Scissors</title>
 </head>
 <body>
-    <script>
-        function getComputerChoice() {
-            let choice = Math.floor((Math.random() * 3) + 1);
+
+<h1>Choose your weapon wisely!</h1>
+<h2>You play 5 rounds of rock, paper, scissors against the computer! Man versus machine!</h2>
+<p>The rules: Rock beats scissors, scissors beats paper, paper beats rock. After 5 rounds, the winner is chosen.</p>
+<p>Choose your weapon to start the first round! Good luck :)</p>
+
+<script>
+let Body = document.getElementsByTagName("body")[0]; //Create "Body" variable to append things to it
+
+const button1 = document.createElement('button'); //Create "button1" variable with ID "rock-button"
+button1.id = 'rock-button';                       
+let buttonText = document.createTextNode("Rock"); //Button has the text "Rock"
+button1.appendChild(buttonText);                    
+Body.appendChild(button1);                        //Finally, append button1 as child of body
+
+const button2 = document.createElement('button'); //Same for button2, paper-button with text "Paper"
+button2.id = 'paper-button';
+let buttonText2 = document.createTextNode("Paper");
+button2.appendChild(buttonText2);
+Body.appendChild(button2);
+
+const button3 = document.createElement('button'); //Same for button3, scissors-button with text "Scissors"
+button3.id = 'scissors-button';
+let buttonText3 = document.createTextNode("Scissors");
+button3.appendChild(buttonText3);
+Body.appendChild(button3);
+
+let round = 0;
+let playerScore = 0;
+let oldPlayerScore = playerScore - 1;
+let computerScore = 0;
+let oldComputerScore = computerScore - 1;
+let playerSelection;
+document.getElementById("rock-button").addEventListener("click", function() {
+playerSelection = "Rock";
+playGame();
+}); //Rock button
+document.getElementById("paper-button").addEventListener("click", function() {
+playerSelection = "Paper";
+playGame();
+}); //Paper button
+document.getElementById("scissors-button").addEventListener("click", function() {
+playerSelection = "Scissors";
+playGame();
+}); //Scissors button
+
+    function playGame() {
+        let roundNumber = 0;
+        let playerPoints = 0;
+        let computerPoints = 0;
+        let computerSelection;
+        let choice = Math.floor((Math.random() * 3) + 1);
             switch (choice) {
                 case 1:
-                    return "Rock";
+                computerSelection = "Rock";
+                break;
                 case 2:
-                    return "Paper";
+                computerSelection = "Paper";
+                break;
                 case 3:
-                    return "Scissors";
+                computerSelection = "Scissors";
+                break;
                 }
-            }
-        function playRound(playerSelection, computerSelection) {
-            playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
-            if (playerSelection === "Rock" && computerSelection === "Paper") {
-            return 0
-            }
-            else if (playerSelection === "Rock" && computerSelection === "Scissors")
-            return 2
-
-            else if (playerSelection === "Rock" && computerSelection === "Rock")
-            return 1
-
-            else if (playerSelection === "Scissors" && computerSelection === "Paper")
-            return 2
-
-            else if (playerSelection === "Scissors" && computerSelection === "Scissors")
-            return 1
-
-            else if (playerSelection === "Scissors" && computerSelection === "Rock")
-            return 0
             
-            else if (playerSelection === "Paper" && computerSelection === "Paper")
-            return 1
+            console.log("Computer: " + computerSelection);
+            console.log("Player: " + playerSelection);
 
-            else if (playerSelection === "Paper" && computerSelection === "Scissors")
-            return 0
+            if (playerSelection === "Rock" && computerSelection === "Scissors"){
+            playerPoints++;
+            }
+            else if (playerSelection === "Scissors" && computerSelection === "Paper"){
+            playerPoints++;
+            } 
+            else if (playerSelection === "Paper" && computerSelection === "Rock"){
+            playerPoints++;
+            }
+            else if (playerSelection === "Scissors" && computerSelection === "Rock"){
+            computerPoints++;
+            } 
+            else if (playerSelection === "Paper" && computerSelection === "Scissors"){
+            computerPoints++;
+            }
+            else if (playerSelection === "Rock" && computerSelection === "Paper"){
+            computerPoints++;
+            } 
+        console.log("Player points this time: " + playerPoints);
+        console.log("Computer points this time: " + computerPoints);
+        playerScore += playerPoints;
+        computerScore += computerPoints;
+        roundNumber++;
+        round += roundNumber;
 
-            else if (playerSelection === "Paper" && computerSelection === "Rock")
-            return 2
-        }
+        console.log("Player score: " + playerScore);
+        console.log("Computer score: " + computerScore);
+        console.log("This is round Nr.: " + round);
 
-function game() {
+        game();
+    }
+
+ function game () {
+    if (round === 1) {
+        alert("This is round 1");
+    }
+    else if (round === 2) {
+        alert("This is round 2");
+    }
+    else if (round === 3) {
+        alert("This is round 3");
+    }
+    else if (round === 4) {
+        alert("This is round 4");
+    }
+    else if (round === 5) {
+        alert("This is FINAL round");
+    }
+alert("Your score is: " + playerScore);
+alert("Computers score is: " + computerScore);
+
+ }
+
+
+/*function game() {   //The main function, that plays 5 rounds, returns and processes the results    
     let roundsLeft = 5;
     let humanScore = 0;
     let computerScore = 0;
+    //Create the first paragraph for the game
+    const askButtonPress = document.createElement('p'); //Create paragraph named "askButtonPress"                     
+    let paraText = document.createTextNode("Please press a button"); //Paragraph has a text
+    askButtonPress.appendChild(paraText);              
+    Body.appendChild(askButtonPress);
     for (let i = 0; i < 5; i++) {   
     let roundText = i === 4 ? 'LAST ROUND' : `ROUND ${i+1}`;
-    let playerSelection = prompt(`${roundText}: Rock, Paper or Scissors?`, "");
-    const computerSelection = getComputerChoice();
-    let points = (playRound(playerSelection, computerSelection));
+    let points = (playGame());
       if (points === 0) {
         roundsLeft--;
         computerScore += 2;
@@ -98,25 +180,7 @@ function game() {
     else if (computerScore = humanScore) {
         alert(`Draw! With ${humanScore} points you played as good as the computer who has also ${computerScore} points.`);
     }
-}
-
-let Body = document.getElementsByTagName("body")[0];
-
-const button1 = document.createElement('button');
-let buttonText = document.createTextNode("Click me!");
-button1.appendChild(buttonText);
-Body.appendChild(button1);
-
-const button2 = document.createElement('button');
-let buttonText2 = document.createTextNode("Click me!");
-button2.appendChild(buttonText2);
-Body.appendChild(button2);
-
-const button3 = document.createElement('button');
-let buttonText3 = document.createTextNode("Click me!");
-button3.appendChild(buttonText3);
-Body.appendChild(button3);
-
-    </script>
+} */
+</script>
 </body>
 </html>

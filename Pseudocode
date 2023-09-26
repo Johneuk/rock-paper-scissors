@@ -40,3 +40,18 @@ function game() {
 }
 
 Play around with the code, make it more smooth and adjust it
+
+Implementing an UI:
+
+Instead of prompting the player via prompt(), we get the input from pressing the buttons rock, paper and scissors
+
+Instead of alerting the player vie alert() about the results, we write the results as a text into a div
+below the buttons as follows:
+
+There are 6 <div>s that I create after every game:
+1. <div> Result of first Round
+2. <div> Result of second Round
+3. <div> Result of third Round
+4. <div> Result of fourth Round
+5. <div> Result of final Round
+6. <div> declare winner and loser. play again?

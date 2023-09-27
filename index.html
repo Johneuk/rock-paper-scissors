@@ -35,9 +35,7 @@ Body.appendChild(button3);
 
 let round = 0;
 let playerScore = 0;
-let oldPlayerScore = playerScore - 1;
 let computerScore = 0;
-let oldComputerScore = computerScore - 1;
 let playerSelection;
 document.getElementById("rock-button").addEventListener("click", function() {
 playerSelection = "Rock";
@@ -107,23 +105,99 @@ playGame();
 
  function game () {
     if (round === 1) {
-        alert("This is round 1");
+        const round1 = document.createElement('p'); //Create paragraph named "round1"                     
+        let round1Text = document.createTextNode("This is round 1"); //Paragraph has a text
+        round1.appendChild(round1Text);              
+        Body.appendChild(round1Text);
+
+        const playerInfo = document.createElement('p'); //Create paragraph named "playerInfo"                     
+        let playerText = document.createTextNode("Your score is: " + playerScore); //Paragraph has a text
+        playerInfo.appendChild(playerText);              
+        Body.appendChild(playerInfo);
+
+        const computerInfo = document.createElement('p'); //Create paragraph named "computerInfo"                     
+        let computerText = document.createTextNode("Computers score is: " + computerScore); //Paragraph has a text
+        computerInfo.appendChild(computerText);              
+        Body.appendChild(computerInfo);
     }
     else if (round === 2) {
-        alert("This is round 2");
+        const round2 = document.createElement('p'); //Create paragraph named "round2"                     
+        let round2Text = document.createTextNode("This is round 2"); //Paragraph has a text
+        round2.appendChild(round2Text);              
+        Body.appendChild(round2Text);
+
+        const playerInfo = document.createElement('p'); //Create paragraph named "playerInfo"                     
+        let playerText = document.createTextNode("Your score is: " + playerScore); //Paragraph has a text
+        playerInfo.appendChild(playerText);              
+        Body.appendChild(playerInfo);
+
+        const computerInfo = document.createElement('p'); //Create paragraph named "computerInfo"                     
+        let computerText = document.createTextNode("Computers score is: " + computerScore); //Paragraph has a text
+        computerInfo.appendChild(computerText);              
+        Body.appendChild(computerInfo);
     }
     else if (round === 3) {
-        alert("This is round 3");
+        const round3 = document.createElement('p'); //Create paragraph named "round3"                     
+        let round3Text = document.createTextNode("This is round 3"); //Paragraph has a text
+        round3.appendChild(round3Text);              
+        Body.appendChild(round3Text);
+
+        const playerInfo = document.createElement('p'); //Create paragraph named "playerInfo"                     
+        let playerText = document.createTextNode("Your score is: " + playerScore); //Paragraph has a text
+        playerInfo.appendChild(playerText);              
+        Body.appendChild(playerInfo);
+
+        const computerInfo = document.createElement('p'); //Create paragraph named "computerInfo"                     
+        let computerText = document.createTextNode("Computers score is: " + computerScore); //Paragraph has a text
+        computerInfo.appendChild(computerText);              
+        Body.appendChild(computerInfo);
     }
     else if (round === 4) {
-        alert("This is round 4");
+        const round4 = document.createElement('p'); //Create paragraph named "round4"                     
+        let round4Text = document.createTextNode("This is round 4"); //Paragraph has a text
+        round4.appendChild(round4Text);              
+        Body.appendChild(round4Text);
+
+        const playerInfo = document.createElement('p'); //Create paragraph named "playerInfo"                     
+        let playerText = document.createTextNode("Your score is: " + playerScore); //Paragraph has a text
+        playerInfo.appendChild(playerText);              
+        Body.appendChild(playerInfo);
+
+        const computerInfo = document.createElement('p'); //Create paragraph named "computerInfo"                     
+        let computerText = document.createTextNode("Computers score is: " + computerScore); //Paragraph has a text
+        computerInfo.appendChild(computerText);              
+        Body.appendChild(computerInfo);
     }
     else if (round === 5) {
-        alert("This is FINAL round");
-    }
-alert("Your score is: " + playerScore);
-alert("Computers score is: " + computerScore);
+        const round5 = document.createElement('p'); //Create paragraph named "round5"                     
+        let round5Text = document.createTextNode("This is round 5"); //Paragraph has a text
+        round5.appendChild(round5Text);              
+        Body.appendChild(round5Text);
 
+        const playerInfo = document.createElement('p'); //Create paragraph named "playerInfo"                     
+        let playerText = document.createTextNode("Your score is: " + playerScore); //Paragraph has a text
+        playerInfo.appendChild(playerText);              
+        Body.appendChild(playerInfo);
+
+        const computerInfo = document.createElement('p'); //Create paragraph named "computerInfo"                     
+        let computerText = document.createTextNode("Computers score is: " + computerScore); //Paragraph has a text
+        computerInfo.appendChild(computerText);              
+        Body.appendChild(computerInfo);
+
+        if (playerScore > computerScore) {
+            const round6 = document.createElement('p'); //Create paragraph named "round6"                     
+            let round6Text = document.createTextNode("YOU WIN! CONGRATULATIONS!"); //Paragraph has a text
+            round6.appendChild(round6Text);              
+            Body.appendChild(round6Text);
+
+        }
+        else if (playerScore < computerScore) {
+            const round6 = document.createElement('p'); //Create paragraph named "round6"                     
+            let round6Text = document.createTextNode("YOU LOSE! COMPUTER WINS!"); //Paragraph has a text
+            round6.appendChild(round6Text);              
+            Body.appendChild(round6Text);
+        }
+    }
  }
 
 

@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<h1>Choose your weapon wisely!</h1>
-<h1>You play 5 rounds of rock, paper, scissors against the computer! Man versus machine!</h1>
-<div>The rules: Rock beats scissors, scissors beats paper, paper beats rock. After 5 rounds, the winner is chosen.</div>
-<div>Choose your weapon to start the first round! Good luck :)</div>
+<h1>Rock, Paper and Scissors</h1>
+<h1>Win against the computer to save humanity</h1>
+<div>Number of rounds: 5</div>
 
 <script>
 
@@ -40,6 +40,11 @@ restartButton.id = 'restart';
 let restartButtonText = document.createTextNode("New Game");
 restartButton.appendChild(restartButtonText);
 Body.appendChild(restartButton);
+
+const firstGame = document.createElement('h2'); //Create paragraph named "firstGame"                     
+let firstGameText = document.createTextNode("Choose your weapon to start the game against the computer"); //Paragraph has a text
+firstGame.appendChild(firstGameText);              
+Body.appendChild(firstGame);
 
 //Global variables
 let round = 0;
@@ -93,8 +98,12 @@ document.getElementById("restart").addEventListener("click", function() {
     h2s.forEach((h2) => {
         h2.remove();
     });
-    // You could add logic here to display a "Game has been restarted" message or something similar
-});
+    // You could add logic here to display a "Game has been restarted" message
+    const gameRestart = document.createElement('h2'); //Create paragraph named "gameRestart"                     
+    let gameRestartText = document.createTextNode("Game has been restarted! Choose your weapon to start a new game against the computer"); //Paragraph has a text
+    gameRestart.appendChild(gameRestartText);              
+    Body.appendChild(gameRestart);
+    });
 
     function playGame() {
         let roundNumber = 0;
@@ -123,30 +132,30 @@ document.getElementById("restart").addEventListener("click", function() {
             //Evaluate playerSelection
             if (playerSelection === "Rock" && computerSelection === "Scissors"){
             playerPoints++;
-            globalInfo1 = "You win!";
+            globalInfo1 = "Rock beats scissors! You win this round!";
             }
             else if (playerSelection === "Scissors" && computerSelection === "Paper"){
             playerPoints++;
-            globalInfo1 = "You win!";
+            globalInfo1 = "Scissors beats paper! You win this round!";
             } 
             else if (playerSelection === "Paper" && computerSelection === "Rock"){
             playerPoints++;
-            globalInfo1 = "You win!";
+            globalInfo1 = "Paper beats rock! You win this round!";
             }
             else if (playerSelection === "Scissors" && computerSelection === "Rock"){
             computerPoints++;
-            globalInfo1 = "Computer wins!";
+            globalInfo1 = "Rock beats scissors! You lose this round!";
             } 
             else if (playerSelection === "Paper" && computerSelection === "Scissors"){
             computerPoints++;
-            globalInfo1 = "Computer wins!";
+            globalInfo1 = "Scissors beats paper! You lose this round!";
             }
             else if (playerSelection === "Rock" && computerSelection === "Paper"){
             computerPoints++;
-            globalInfo1 = "Computer wins!";
+            globalInfo1 = "Paper beats rock! You lose this round!";
             }
             else {
-                globalInfo1 = "Draw!";
+                globalInfo1 = "Same! Draw!";
             }
 
         globalInfo = globalInfo1;
@@ -163,6 +172,12 @@ document.getElementById("restart").addEventListener("click", function() {
 
  function game () {
     if (round === 1) {
+
+        // Remove existing h2 elements, or any other elements you want to reset
+        let h2s = document.querySelectorAll("h2");
+        h2s.forEach((h2) => {
+        h2.remove();
+        });
 
         const round1 = document.createElement('h2'); //Create paragraph named "round1"                     
         let round1Text = document.createTextNode("This is round 1"); //Paragraph has a text
@@ -347,14 +362,14 @@ document.getElementById("restart").addEventListener("click", function() {
 
         if (playerScore > computerScore) {
             const round6 = document.createElement('p'); //Create paragraph named "round6"                     
-            let round6Text = document.createTextNode("YOU WIN! CONGRATULATIONS!"); //Paragraph has a text
+            let round6Text = document.createTextNode("YOU WIN! HUMANITY IS SAVED! New Game?"); //Paragraph has a text
             round6.appendChild(round6Text);              
             Body.appendChild(round6);
 
         }
         else if (playerScore < computerScore) {
             const round6 = document.createElement('p'); //Create paragraph named "round6"                     
-            let round6Text = document.createTextNode("YOU LOSE! COMPUTER WINS!"); //Paragraph has a text
+            let round6Text = document.createTextNode("COMPUTER WINS! HUMANITY IS LOST! New Game?"); //Paragraph has a text
             round6.appendChild(round6Text);              
             Body.appendChild(round6);
         }

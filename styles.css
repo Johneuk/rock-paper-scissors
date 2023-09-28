@@ -1,0 +1,10 @@
+* {
+    background-color: blue;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    margin: 16px;
+}
+
+button {
+    margin: 5px;
+}

@@ -8,11 +8,13 @@
 <body>
 
 <h1>Choose your weapon wisely!</h1>
-<h2>You play 5 rounds of rock, paper, scissors against the computer! Man versus machine!</h2>
-<p>The rules: Rock beats scissors, scissors beats paper, paper beats rock. After 5 rounds, the winner is chosen.</p>
-<p>Choose your weapon to start the first round! Good luck :)</p>
+<h1>You play 5 rounds of rock, paper, scissors against the computer! Man versus machine!</h1>
+<div>The rules: Rock beats scissors, scissors beats paper, paper beats rock. After 5 rounds, the winner is chosen.</div>
+<div>Choose your weapon to start the first round! Good luck :)</div>
 
 <script>
+
+//Creating the buttons
 let Body = document.getElementsByTagName("body")[0]; //Create "Body" variable to append things to it
 
 const button1 = document.createElement('button'); //Create "button1" variable with ID "rock-button"
@@ -33,82 +35,149 @@ let buttonText3 = document.createTextNode("Scissors");
 button3.appendChild(buttonText3);
 Body.appendChild(button3);
 
+const restartButton = document.createElement('button'); //Same for restartButton
+restartButton.id = 'restart';
+let restartButtonText = document.createTextNode("New Game");
+restartButton.appendChild(restartButtonText);
+Body.appendChild(restartButton);
+
+//Global variables
 let round = 0;
 let playerScore = 0;
 let computerScore = 0;
 let playerSelection;
+let globalComputerChoice = "";
+let globalPlayerChoice = "";
+let globalInfo = "";
+
+//Creating Rock button click event
 document.getElementById("rock-button").addEventListener("click", function() {
 playerSelection = "Rock";
+globalPlayerChoice = "Rock";
 playGame();
-}); //Rock button
+}); 
+
+//Creating Paper button click event
 document.getElementById("paper-button").addEventListener("click", function() {
 playerSelection = "Paper";
+globalPlayerChoice = "Paper";
 playGame();
-}); //Paper button
+});
+
+//Creating Scissors button click event
 document.getElementById("scissors-button").addEventListener("click", function() {
 playerSelection = "Scissors";
+globalPlayerChoice = "Scissors";
 playGame();
-}); //Scissors button
+});
+
+//Creating restartButton click event
+document.getElementById("restart").addEventListener("click", function() {
+    // Reset your global variables
+    round = 0;
+    playerScore = 0;
+    computerScore = 0;
+    playerSelection = "";
+    globalComputerChoice = "";
+    globalPlayerChoice = "";
+    globalInfo = "";
+
+    // Remove existing paragraphs, or any other elements you want to reset
+    let paragraphs = document.querySelectorAll("p");
+    paragraphs.forEach((p) => {
+        p.remove();
+    });
+
+    // Remove existing h2 elements, or any other elements you want to reset
+    let h2s = document.querySelectorAll("h2");
+    h2s.forEach((h2) => {
+        h2.remove();
+    });
+    // You could add logic here to display a "Game has been restarted" message or something similar
+});
 
     function playGame() {
         let roundNumber = 0;
         let playerPoints = 0;
         let computerPoints = 0;
+        let globalInfo1 = "";
+
+        //Evaluate computerSelection
         let computerSelection;
         let choice = Math.floor((Math.random() * 3) + 1);
             switch (choice) {
                 case 1:
                 computerSelection = "Rock";
+                globalComputerChoice = "Rock";
                 break;
                 case 2:
                 computerSelection = "Paper";
+                globalComputerChoice = "Paper";
                 break;
                 case 3:
                 computerSelection = "Scissors";
+                globalComputerChoice = "Scissors";
                 break;
-                }
-            
-            console.log("Computer: " + computerSelection);
-            console.log("Player: " + playerSelection);
+                }          
 
+            //Evaluate playerSelection
             if (playerSelection === "Rock" && computerSelection === "Scissors"){
             playerPoints++;
+            globalInfo1 = "You win!";
             }
             else if (playerSelection === "Scissors" && computerSelection === "Paper"){
             playerPoints++;
+            globalInfo1 = "You win!";
             } 
             else if (playerSelection === "Paper" && computerSelection === "Rock"){
             playerPoints++;
+            globalInfo1 = "You win!";
             }
             else if (playerSelection === "Scissors" && computerSelection === "Rock"){
             computerPoints++;
+            globalInfo1 = "Computer wins!";
             } 
             else if (playerSelection === "Paper" && computerSelection === "Scissors"){
             computerPoints++;
+            globalInfo1 = "Computer wins!";
             }
             else if (playerSelection === "Rock" && computerSelection === "Paper"){
             computerPoints++;
-            } 
-        console.log("Player points this time: " + playerPoints);
-        console.log("Computer points this time: " + computerPoints);
+            globalInfo1 = "Computer wins!";
+            }
+            else {
+                globalInfo1 = "Draw!";
+            }
+
+        globalInfo = globalInfo1;
         playerScore += playerPoints;
         computerScore += computerPoints;
         roundNumber++;
         round += roundNumber;
 
-        console.log("Player score: " + playerScore);
-        console.log("Computer score: " + computerScore);
-        console.log("This is round Nr.: " + round);
+        console.log(globalInfo);
+        console.log(globalInfo1);
 
         game();
     }
 
  function game () {
     if (round === 1) {
-        const round1 = document.createElement('p'); //Create paragraph named "round1"                     
+
+        const round1 = document.createElement('h2'); //Create paragraph named "round1"                     
         let round1Text = document.createTextNode("This is round 1"); //Paragraph has a text
         round1.appendChild(round1Text);              
-        Body.appendChild(round1Text);
+        Body.appendChild(round1);
+
+        const globalChoice = document.createElement('p'); //Create paragraph named "globalChoice"                     
+        let globalChoiceText = document.createTextNode("Player plays: " + globalPlayerChoice + ", Computer plays: " + globalComputerChoice); //Paragraph has a text
+        globalChoice.appendChild(globalChoiceText);              
+        Body.appendChild(globalChoice);
+
+        const globalInformation = document.createElement('p'); //Create paragraph named "globalInfo"                     
+        let globalInfoText = document.createTextNode(globalInfo); //Paragraph has a text
+        globalInformation.appendChild(globalInfoText);              
+        Body.appendChild(globalInformation);
 
         const playerInfo = document.createElement('p'); //Create paragraph named "playerInfo"                     
         let playerText = document.createTextNode("Your score is: " + playerScore); //Paragraph has a text
@@ -121,10 +190,33 @@ playGame();
         Body.appendChild(computerInfo);
     }
     else if (round === 2) {
-        const round2 = document.createElement('p'); //Create paragraph named "round2"                     
+
+        // Remove existing paragraphs, or any other elements you want to reset
+        let paragraphs = document.querySelectorAll("p");
+        paragraphs.forEach((p) => {
+        p.remove();
+        });
+
+        // Remove existing h2 elements, or any other elements you want to reset
+        let h2s = document.querySelectorAll("h2");
+        h2s.forEach((h2) => {
+        h2.remove();
+        });
+
+        const round2 = document.createElement('h2'); //Create paragraph named "round2"                     
         let round2Text = document.createTextNode("This is round 2"); //Paragraph has a text
         round2.appendChild(round2Text);              
-        Body.appendChild(round2Text);
+        Body.appendChild(round2);
+
+        const globalChoice = document.createElement('p'); //Create paragraph named "globalChoice"                     
+        let globalChoiceText = document.createTextNode("Player plays: " + globalPlayerChoice + ", Computer plays: " + globalComputerChoice); //Paragraph has a text
+        globalChoice.appendChild(globalChoiceText);              
+        Body.appendChild(globalChoice);
+
+        const globalInformation = document.createElement('p'); //Create paragraph named "globalInfo"                     
+        let globalInfoText = document.createTextNode(globalInfo); //Paragraph has a text
+        globalInformation.appendChild(globalInfoText);              
+        Body.appendChild(globalInformation);
 
         const playerInfo = document.createElement('p'); //Create paragraph named "playerInfo"                     
         let playerText = document.createTextNode("Your score is: " + playerScore); //Paragraph has a text
@@ -137,10 +229,33 @@ playGame();
         Body.appendChild(computerInfo);
     }
     else if (round === 3) {
-        const round3 = document.createElement('p'); //Create paragraph named "round3"                     
+
+        // Remove existing paragraphs, or any other elements you want to reset
+        let paragraphs = document.querySelectorAll("p");
+        paragraphs.forEach((p) => {
+        p.remove();
+        });
+
+        // Remove existing h2 elements, or any other elements you want to reset
+        let h2s = document.querySelectorAll("h2");
+        h2s.forEach((h2) => {
+        h2.remove();
+        });
+
+        const round3 = document.createElement('h2'); //Create paragraph named "round3"                     
         let round3Text = document.createTextNode("This is round 3"); //Paragraph has a text
         round3.appendChild(round3Text);              
-        Body.appendChild(round3Text);
+        Body.appendChild(round3);
+
+        const globalChoice = document.createElement('p'); //Create paragraph named "globalChoice"                     
+        let globalChoiceText = document.createTextNode("Player plays: " + globalPlayerChoice + ", Computer plays: " + globalComputerChoice); //Paragraph has a text
+        globalChoice.appendChild(globalChoiceText);              
+        Body.appendChild(globalChoice);
+
+        const globalInformation = document.createElement('p'); //Create paragraph named "globalInfo"                     
+        let globalInfoText = document.createTextNode(globalInfo); //Paragraph has a text
+        globalInformation.appendChild(globalInfoText);              
+        Body.appendChild(globalInformation);
 
         const playerInfo = document.createElement('p'); //Create paragraph named "playerInfo"                     
         let playerText = document.createTextNode("Your score is: " + playerScore); //Paragraph has a text
@@ -153,10 +268,33 @@ playGame();
         Body.appendChild(computerInfo);
     }
     else if (round === 4) {
-        const round4 = document.createElement('p'); //Create paragraph named "round4"                     
+
+        // Remove existing paragraphs, or any other elements you want to reset
+        let paragraphs = document.querySelectorAll("p");
+        paragraphs.forEach((p) => {
+        p.remove();
+        });
+
+        // Remove existing h2 elements, or any other elements you want to reset
+        let h2s = document.querySelectorAll("h2");
+        h2s.forEach((h2) => {
+        h2.remove();
+        });
+
+        const round4 = document.createElement('h2'); //Create paragraph named "round4"                     
         let round4Text = document.createTextNode("This is round 4"); //Paragraph has a text
         round4.appendChild(round4Text);              
-        Body.appendChild(round4Text);
+        Body.appendChild(round4);
+
+        const globalChoice = document.createElement('p'); //Create paragraph named "globalChoice"                     
+        let globalChoiceText = document.createTextNode("Player plays: " + globalPlayerChoice + ", Computer plays: " + globalComputerChoice); //Paragraph has a text
+        globalChoice.appendChild(globalChoiceText);              
+        Body.appendChild(globalChoice);
+
+        const globalInformation = document.createElement('p'); //Create paragraph named "globalInfo"                     
+        let globalInfoText = document.createTextNode(globalInfo); //Paragraph has a text
+        globalInformation.appendChild(globalInfoText);              
+        Body.appendChild(globalInformation);
 
         const playerInfo = document.createElement('p'); //Create paragraph named "playerInfo"                     
         let playerText = document.createTextNode("Your score is: " + playerScore); //Paragraph has a text
@@ -169,10 +307,33 @@ playGame();
         Body.appendChild(computerInfo);
     }
     else if (round === 5) {
-        const round5 = document.createElement('p'); //Create paragraph named "round5"                     
+
+        // Remove existing paragraphs, or any other elements you want to reset
+        let paragraphs = document.querySelectorAll("p");
+        paragraphs.forEach((p) => {
+        p.remove();
+        });
+
+        // Remove existing h2 elements, or any other elements you want to reset
+        let h2s = document.querySelectorAll("h2");
+        h2s.forEach((h2) => {
+        h2.remove();
+        });
+
+        const round5 = document.createElement('h2'); //Create paragraph named "round5"                     
         let round5Text = document.createTextNode("This is round 5"); //Paragraph has a text
         round5.appendChild(round5Text);              
-        Body.appendChild(round5Text);
+        Body.appendChild(round5);
+
+        const globalChoice = document.createElement('p'); //Create paragraph named "globalChoice"                     
+        let globalChoiceText = document.createTextNode("Player plays: " + globalPlayerChoice + ", Computer plays: " + globalComputerChoice); //Paragraph has a text
+        globalChoice.appendChild(globalChoiceText);              
+        Body.appendChild(globalChoice);
+
+        const globalInformation = document.createElement('p'); //Create paragraph named "globalInfo"                     
+        let globalInfoText = document.createTextNode(globalInfo); //Paragraph has a text
+        globalInformation.appendChild(globalInfoText);              
+        Body.appendChild(globalInformation);
 
         const playerInfo = document.createElement('p'); //Create paragraph named "playerInfo"                     
         let playerText = document.createTextNode("Your score is: " + playerScore); //Paragraph has a text
@@ -188,73 +349,18 @@ playGame();
             const round6 = document.createElement('p'); //Create paragraph named "round6"                     
             let round6Text = document.createTextNode("YOU WIN! CONGRATULATIONS!"); //Paragraph has a text
             round6.appendChild(round6Text);              
-            Body.appendChild(round6Text);
+            Body.appendChild(round6);
 
         }
         else if (playerScore < computerScore) {
             const round6 = document.createElement('p'); //Create paragraph named "round6"                     
             let round6Text = document.createTextNode("YOU LOSE! COMPUTER WINS!"); //Paragraph has a text
             round6.appendChild(round6Text);              
-            Body.appendChild(round6Text);
+            Body.appendChild(round6);
         }
     }
  }
 
-
-/*function game() {   //The main function, that plays 5 rounds, returns and processes the results    
-    let roundsLeft = 5;
-    let humanScore = 0;
-    let computerScore = 0;
-    //Create the first paragraph for the game
-    const askButtonPress = document.createElement('p'); //Create paragraph named "askButtonPress"                     
-    let paraText = document.createTextNode("Please press a button"); //Paragraph has a text
-    askButtonPress.appendChild(paraText);              
-    Body.appendChild(askButtonPress);
-    for (let i = 0; i < 5; i++) {   
-    let roundText = i === 4 ? 'LAST ROUND' : `ROUND ${i+1}`;
-    let points = (playGame());
-      if (points === 0) {
-        roundsLeft--;
-        computerScore += 2;
-        if (roundsLeft > 1 || roundsLeft < 1) {
-        alert(`You lose! You get 0 points. Your current score is ${humanScore}, the computers score is ${computerScore}, you have ${roundsLeft} rounds left.`);
-        }
-        else if (roundsLeft === 1) {
-        alert(`You lose! You get 0 points. Your current score is ${humanScore}, the computers score is ${computerScore}, you have ${roundsLeft} round left.`);
-        }
-      }
-      else if (points === 1) {
-        roundsLeft--;
-        humanScore++;
-        computerScore++;
-        if (roundsLeft > 1 || roundsLeft < 1) {
-        alert(`Draw! You get 1 point. Your current score is ${humanScore}, the computers score is ${computerScore}, you have ${roundsLeft} rounds left.`);
-        }
-        else if (roundsLeft === 1) {
-        alert(`Draw! You get 1 point. Your current score is ${humanScore}, the computers score is ${computerScore}, you have ${roundsLeft} round left.`);
-        }
-      }
-      else if (points === 2) {
-        roundsLeft--;
-        humanScore += 2;
-        if (roundsLeft > 1 || roundsLeft < 1) {
-        alert(`You win! You get 2 points. Your current score is ${humanScore}, the computers score is ${computerScore}, you have ${roundsLeft} rounds left.`);
-        }
-        else if (roundsLeft === 1) {
-        alert(`You win! You get 2 points. Your current score is ${humanScore}, the computers score is ${computerScore}, you have ${roundsLeft} round left.`);
-        }
-      }
-    }
-    if (computerScore > humanScore) {
-        alert(`Bummer! You lost with ${humanScore} points against the computer who has ${computerScore} points.`);
-    }
-    else if (computerScore < humanScore) {
-        alert(`You win! You won with ${humanScore} points against the computer who has only ${computerScore} points.`);
-    }
-    else if (computerScore = humanScore) {
-        alert(`Draw! With ${humanScore} points you played as good as the computer who has also ${computerScore} points.`);
-    }
-} */
 </script>
 </body>
 </html>

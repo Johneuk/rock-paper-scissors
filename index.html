@@ -8,9 +8,9 @@
 </head>
 <body>
 
-<h1>Rock, Paper and Scissors</h1>
-<h1>Win against the computer to save humanity</h1>
-<div>Number of rounds: 5</div>
+<h1 class="title">Rock, Paper and Scissors</h1>
+<h1>Skynet has taken humanity hostage! Win against the computer to save humanity from certain annihilation! x_x</h1>
+<div class="numberOfRounds">Number of rounds: 5</div>
 
 <script>
 
@@ -20,31 +20,41 @@ let Body = document.getElementsByTagName("body")[0]; //Create "Body" variable to
 const button1 = document.createElement('button'); //Create "button1" variable with ID "rock-button"
 button1.id = 'rock-button';                       
 let buttonText = document.createTextNode("Rock"); //Button has the text "Rock"
-button1.appendChild(buttonText);                    
+button1.appendChild(buttonText);   
+buttonText.id = 'rock-buttonText';                  
 Body.appendChild(button1);                        //Finally, append button1 as child of body
+document.getElementById("rock-button").style.padding = "16px";
+document.getElementsByTagName("button")[0].style.fontSize = "32px";
 
 const button2 = document.createElement('button'); //Same for button2, paper-button with text "Paper"
 button2.id = 'paper-button';
 let buttonText2 = document.createTextNode("Paper");
 button2.appendChild(buttonText2);
 Body.appendChild(button2);
+document.getElementById("paper-button").style.padding = "16px";
+document.getElementsByTagName("button")[1].style.fontSize = "32px";
 
 const button3 = document.createElement('button'); //Same for button3, scissors-button with text "Scissors"
 button3.id = 'scissors-button';
 let buttonText3 = document.createTextNode("Scissors");
 button3.appendChild(buttonText3);
 Body.appendChild(button3);
+document.getElementById("scissors-button").style.padding = "16px";
+document.getElementsByTagName("button")[2].style.fontSize = "32px";
 
 const restartButton = document.createElement('button'); //Same for restartButton
 restartButton.id = 'restart';
 let restartButtonText = document.createTextNode("New Game");
 restartButton.appendChild(restartButtonText);
 Body.appendChild(restartButton);
+document.getElementById("restart").style.padding = "16px";
+document.getElementsByTagName("button")[3].style.fontSize = "32px";
 
 const firstGame = document.createElement('h2'); //Create paragraph named "firstGame"                     
 let firstGameText = document.createTextNode("Choose your weapon to start the game against the computer"); //Paragraph has a text
 firstGame.appendChild(firstGameText);              
 Body.appendChild(firstGame);
+document.getElementsByTagName("h2")[0].style.fontSize = "32px";
 
 //Global variables
 let round = 0;
@@ -103,6 +113,7 @@ document.getElementById("restart").addEventListener("click", function() {
     let gameRestartText = document.createTextNode("Game has been restarted! Choose your weapon to start a new game against the computer"); //Paragraph has a text
     gameRestart.appendChild(gameRestartText);              
     Body.appendChild(gameRestart);
+    document.getElementsByTagName("h2")[0].style.fontSize = "32px";
     });
 
     function playGame() {
@@ -155,7 +166,7 @@ document.getElementById("restart").addEventListener("click", function() {
             globalInfo1 = "Paper beats rock! You lose this round!";
             }
             else {
-                globalInfo1 = "Same! Draw!";
+                globalInfo1 = "Same weapon! Draw!";
             }
 
         globalInfo = globalInfo1;
@@ -163,9 +174,6 @@ document.getElementById("restart").addEventListener("click", function() {
         computerScore += computerPoints;
         roundNumber++;
         round += roundNumber;
-
-        console.log(globalInfo);
-        console.log(globalInfo1);
 
         game();
     }
@@ -183,26 +191,31 @@ document.getElementById("restart").addEventListener("click", function() {
         let round1Text = document.createTextNode("This is round 1"); //Paragraph has a text
         round1.appendChild(round1Text);              
         Body.appendChild(round1);
+        document.getElementsByTagName("h2")[0].style.fontSize = "32px";
 
         const globalChoice = document.createElement('p'); //Create paragraph named "globalChoice"                     
         let globalChoiceText = document.createTextNode("Player plays: " + globalPlayerChoice + ", Computer plays: " + globalComputerChoice); //Paragraph has a text
         globalChoice.appendChild(globalChoiceText);              
         Body.appendChild(globalChoice);
+        document.getElementsByTagName("p")[0].style.fontSize = "32px";
 
         const globalInformation = document.createElement('p'); //Create paragraph named "globalInfo"                     
         let globalInfoText = document.createTextNode(globalInfo); //Paragraph has a text
         globalInformation.appendChild(globalInfoText);              
         Body.appendChild(globalInformation);
+        document.getElementsByTagName("p")[1].style.fontSize = "32px";
 
         const playerInfo = document.createElement('p'); //Create paragraph named "playerInfo"                     
         let playerText = document.createTextNode("Your score is: " + playerScore); //Paragraph has a text
         playerInfo.appendChild(playerText);              
         Body.appendChild(playerInfo);
+        document.getElementsByTagName("p")[2].style.fontSize = "32px";
 
         const computerInfo = document.createElement('p'); //Create paragraph named "computerInfo"                     
         let computerText = document.createTextNode("Computers score is: " + computerScore); //Paragraph has a text
         computerInfo.appendChild(computerText);              
         Body.appendChild(computerInfo);
+        document.getElementsByTagName("p")[3].style.fontSize = "32px";
     }
     else if (round === 2) {
 
@@ -222,26 +235,31 @@ document.getElementById("restart").addEventListener("click", function() {
         let round2Text = document.createTextNode("This is round 2"); //Paragraph has a text
         round2.appendChild(round2Text);              
         Body.appendChild(round2);
+        document.getElementsByTagName("h2")[0].style.fontSize = "32px";
 
         const globalChoice = document.createElement('p'); //Create paragraph named "globalChoice"                     
         let globalChoiceText = document.createTextNode("Player plays: " + globalPlayerChoice + ", Computer plays: " + globalComputerChoice); //Paragraph has a text
         globalChoice.appendChild(globalChoiceText);              
         Body.appendChild(globalChoice);
+        document.getElementsByTagName("p")[0].style.fontSize = "32px";
 
         const globalInformation = document.createElement('p'); //Create paragraph named "globalInfo"                     
         let globalInfoText = document.createTextNode(globalInfo); //Paragraph has a text
         globalInformation.appendChild(globalInfoText);              
         Body.appendChild(globalInformation);
+        document.getElementsByTagName("p")[1].style.fontSize = "32px";
 
         const playerInfo = document.createElement('p'); //Create paragraph named "playerInfo"                     
         let playerText = document.createTextNode("Your score is: " + playerScore); //Paragraph has a text
         playerInfo.appendChild(playerText);              
         Body.appendChild(playerInfo);
+        document.getElementsByTagName("p")[2].style.fontSize = "32px";
 
         const computerInfo = document.createElement('p'); //Create paragraph named "computerInfo"                     
         let computerText = document.createTextNode("Computers score is: " + computerScore); //Paragraph has a text
         computerInfo.appendChild(computerText);              
         Body.appendChild(computerInfo);
+        document.getElementsByTagName("p")[3].style.fontSize = "32px";
     }
     else if (round === 3) {
 
@@ -261,26 +279,31 @@ document.getElementById("restart").addEventListener("click", function() {
         let round3Text = document.createTextNode("This is round 3"); //Paragraph has a text
         round3.appendChild(round3Text);              
         Body.appendChild(round3);
+        document.getElementsByTagName("h2")[0].style.fontSize = "32px";
 
         const globalChoice = document.createElement('p'); //Create paragraph named "globalChoice"                     
         let globalChoiceText = document.createTextNode("Player plays: " + globalPlayerChoice + ", Computer plays: " + globalComputerChoice); //Paragraph has a text
         globalChoice.appendChild(globalChoiceText);              
         Body.appendChild(globalChoice);
+        document.getElementsByTagName("p")[0].style.fontSize = "32px";
 
         const globalInformation = document.createElement('p'); //Create paragraph named "globalInfo"                     
         let globalInfoText = document.createTextNode(globalInfo); //Paragraph has a text
         globalInformation.appendChild(globalInfoText);              
         Body.appendChild(globalInformation);
+        document.getElementsByTagName("p")[1].style.fontSize = "32px";
 
         const playerInfo = document.createElement('p'); //Create paragraph named "playerInfo"                     
         let playerText = document.createTextNode("Your score is: " + playerScore); //Paragraph has a text
         playerInfo.appendChild(playerText);              
         Body.appendChild(playerInfo);
+        document.getElementsByTagName("p")[2].style.fontSize = "32px";
 
         const computerInfo = document.createElement('p'); //Create paragraph named "computerInfo"                     
         let computerText = document.createTextNode("Computers score is: " + computerScore); //Paragraph has a text
         computerInfo.appendChild(computerText);              
         Body.appendChild(computerInfo);
+        document.getElementsByTagName("p")[3].style.fontSize = "32px";
     }
     else if (round === 4) {
 
@@ -300,26 +323,31 @@ document.getElementById("restart").addEventListener("click", function() {
         let round4Text = document.createTextNode("This is round 4"); //Paragraph has a text
         round4.appendChild(round4Text);              
         Body.appendChild(round4);
+        document.getElementsByTagName("h2")[0].style.fontSize = "32px";
 
         const globalChoice = document.createElement('p'); //Create paragraph named "globalChoice"                     
         let globalChoiceText = document.createTextNode("Player plays: " + globalPlayerChoice + ", Computer plays: " + globalComputerChoice); //Paragraph has a text
         globalChoice.appendChild(globalChoiceText);              
         Body.appendChild(globalChoice);
+        document.getElementsByTagName("p")[0].style.fontSize = "32px";
 
         const globalInformation = document.createElement('p'); //Create paragraph named "globalInfo"                     
         let globalInfoText = document.createTextNode(globalInfo); //Paragraph has a text
         globalInformation.appendChild(globalInfoText);              
         Body.appendChild(globalInformation);
+        document.getElementsByTagName("p")[1].style.fontSize = "32px";
 
         const playerInfo = document.createElement('p'); //Create paragraph named "playerInfo"                     
         let playerText = document.createTextNode("Your score is: " + playerScore); //Paragraph has a text
         playerInfo.appendChild(playerText);              
         Body.appendChild(playerInfo);
+        document.getElementsByTagName("p")[2].style.fontSize = "32px";
 
         const computerInfo = document.createElement('p'); //Create paragraph named "computerInfo"                     
         let computerText = document.createTextNode("Computers score is: " + computerScore); //Paragraph has a text
         computerInfo.appendChild(computerText);              
         Body.appendChild(computerInfo);
+        document.getElementsByTagName("p")[3].style.fontSize = "32px";
     }
     else if (round === 5) {
 
@@ -339,32 +367,38 @@ document.getElementById("restart").addEventListener("click", function() {
         let round5Text = document.createTextNode("This is round 5"); //Paragraph has a text
         round5.appendChild(round5Text);              
         Body.appendChild(round5);
+        document.getElementsByTagName("h2")[0].style.fontSize = "32px";
 
         const globalChoice = document.createElement('p'); //Create paragraph named "globalChoice"                     
         let globalChoiceText = document.createTextNode("Player plays: " + globalPlayerChoice + ", Computer plays: " + globalComputerChoice); //Paragraph has a text
         globalChoice.appendChild(globalChoiceText);              
         Body.appendChild(globalChoice);
+        document.getElementsByTagName("p")[0].style.fontSize = "32px";
 
         const globalInformation = document.createElement('p'); //Create paragraph named "globalInfo"                     
         let globalInfoText = document.createTextNode(globalInfo); //Paragraph has a text
         globalInformation.appendChild(globalInfoText);              
         Body.appendChild(globalInformation);
+        document.getElementsByTagName("p")[1].style.fontSize = "32px";
 
         const playerInfo = document.createElement('p'); //Create paragraph named "playerInfo"                     
         let playerText = document.createTextNode("Your score is: " + playerScore); //Paragraph has a text
         playerInfo.appendChild(playerText);              
         Body.appendChild(playerInfo);
+        document.getElementsByTagName("p")[2].style.fontSize = "32px";
 
         const computerInfo = document.createElement('p'); //Create paragraph named "computerInfo"                     
         let computerText = document.createTextNode("Computers score is: " + computerScore); //Paragraph has a text
         computerInfo.appendChild(computerText);              
         Body.appendChild(computerInfo);
+        document.getElementsByTagName("p")[3].style.fontSize = "32px";
 
         if (playerScore > computerScore) {
             const round6 = document.createElement('p'); //Create paragraph named "round6"                     
             let round6Text = document.createTextNode("YOU WIN! HUMANITY IS SAVED! New Game?"); //Paragraph has a text
             round6.appendChild(round6Text);              
             Body.appendChild(round6);
+            document.getElementsByTagName("p")[4].style.fontSize = "32px";
 
         }
         else if (playerScore < computerScore) {
@@ -372,6 +406,7 @@ document.getElementById("restart").addEventListener("click", function() {
             let round6Text = document.createTextNode("COMPUTER WINS! HUMANITY IS LOST! New Game?"); //Paragraph has a text
             round6.appendChild(round6Text);              
             Body.appendChild(round6);
+            document.getElementsByTagName("p")[4].style.fontSize = "32px";
         }
     }
  }

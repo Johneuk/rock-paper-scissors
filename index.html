@@ -25,6 +25,14 @@ buttonText.id = 'rock-buttonText';
 Body.appendChild(button1);                        //Finally, append button1 as child of body
 document.getElementById("rock-button").style.padding = "16px";
 document.getElementsByTagName("button")[0].style.fontSize = "32px";
+button1.addEventListener(
+  "mouseover",
+  (event) => {  event.target.style.background = "orange"; event.target.style.color = "black"; }
+);
+button1.addEventListener(
+  "mouseleave",
+  (event) => {  event.target.style.background = ""; event.target.style.color = ""; }
+);
 
 const button2 = document.createElement('button'); //Same for button2, paper-button with text "Paper"
 button2.id = 'paper-button';
@@ -33,6 +41,14 @@ button2.appendChild(buttonText2);
 Body.appendChild(button2);
 document.getElementById("paper-button").style.padding = "16px";
 document.getElementsByTagName("button")[1].style.fontSize = "32px";
+button2.addEventListener(
+  "mouseover",
+  (event) => {  event.target.style.background = "orange"; event.target.style.color = "black"; }
+);
+button2.addEventListener(
+  "mouseleave",
+  (event) => {  event.target.style.background = ""; event.target.style.color = ""; }
+);
 
 const button3 = document.createElement('button'); //Same for button3, scissors-button with text "Scissors"
 button3.id = 'scissors-button';
@@ -41,6 +57,14 @@ button3.appendChild(buttonText3);
 Body.appendChild(button3);
 document.getElementById("scissors-button").style.padding = "16px";
 document.getElementsByTagName("button")[2].style.fontSize = "32px";
+button3.addEventListener(
+  "mouseover",
+  (event) => {  event.target.style.background = "orange"; event.target.style.color = "black"; }
+);
+button3.addEventListener(
+  "mouseleave",
+  (event) => {  event.target.style.background = ""; event.target.style.color = ""; }
+);
 
 const restartButton = document.createElement('button'); //Same for restartButton
 restartButton.id = 'restart';
@@ -49,6 +73,14 @@ restartButton.appendChild(restartButtonText);
 Body.appendChild(restartButton);
 document.getElementById("restart").style.padding = "16px";
 document.getElementsByTagName("button")[3].style.fontSize = "32px";
+restartButton.addEventListener(
+  "mouseover",
+  (event) => {  event.target.style.background = "orange"; event.target.style.color = "black"; }
+);
+restartButton.addEventListener(
+  "mouseleave",
+  (event) => {  event.target.style.background = ""; event.target.style.color = ""; }
+);
 
 const firstGame = document.createElement('h2'); //Create paragraph named "firstGame"                     
 let firstGameText = document.createTextNode("Choose your weapon to start the game against the computer"); //Paragraph has a text
